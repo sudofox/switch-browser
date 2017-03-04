@@ -32,8 +32,10 @@ window.devTool = (function () {
   }
 
   socket.onMessage(function (message) {
-    var handler = messageHandlers[message.type];
-    handler(message);
+    if (messageHandlers.hasOwnProperty(message.type)) {
+      var handler = messageHandlers[message.type];
+      handler(message);
+    }
   });
 
   return {
