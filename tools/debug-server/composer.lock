@@ -1,0 +1,77 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "ac8aeae3daa0ef76164a35e77fb97d4c",
+    "packages": [
+        {
+            "name": "morozovsk/websocket",
+            "version": "4.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/morozovsk/websocket.git",
+                "reference": "034a514ec64eed9be3cb6fc9f4b22f67216f71ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/morozovsk/websocket/zipball/034a514ec64eed9be3cb6fc9f4b22f67216f71ab",
+                "reference": "034a514ec64eed9be3cb6fc9f4b22f67216f71ab",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "morozovsk\\websocket\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "simple chat (single daemon)",
+                    "homepage": "http://sharoid.ru/chat.html"
+                },
+                {
+                    "name": "pro chat (master + worker)",
+                    "homepage": "http://sharoid.ru/chat2.html"
+                },
+                {
+                    "name": "simple game",
+                    "homepage": "http://sharoid.ru/game.html"
+                }
+            ],
+            "description": "simple php websocket server with examples and demo: simple chat (single daemon) - http://sharoid.ru/chat.html , pro chat (master + worker) - http://sharoid.ru/chat2.html , simple game - http://sharoid.ru/game.html",
+            "homepage": "http://sharoid.ru/game.html",
+            "keywords": [
+                "chat",
+                "demo",
+                "event",
+                "examle",
+                "game",
+                "laravel",
+                "libevent",
+                "server",
+                "socket_select",
+                "websocket",
+                "yii"
+            ],
+            "time": "2017-02-24T10:13:40+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

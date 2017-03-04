@@ -1,0 +1,5 @@
+{
+    "require": {
+        "morozovsk/websocket": "^4.2"
+    }
+}

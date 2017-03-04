@@ -1,0 +1,4 @@
+error_log
+vendor*
+config.php
+websocket_server.pid
