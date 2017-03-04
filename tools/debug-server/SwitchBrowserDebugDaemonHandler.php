@@ -26,7 +26,7 @@ var $debuggers = array();
 			$this->debuggee = null;
 			unset($this->clientRoles[$connectionID]);
 			foreach ($this->debuggers as $debugger) {
-				$this->sendToClient($debugger, json_encode(array("type" => "STATUS", "content" => "DEBUGGEE_DISCONNECTED")));
+				$this->sendToClient($debugger, json_encode(array("type" => "STATUS", "contentType" => "string", "content" => "DEBUGGEE_DISCONNECTED")));
 				}
 			echo "Connection with debuggee (ID: {$connectionID}) closed\n";
 			break;
@@ -55,12 +55,12 @@ var $debuggers = array();
 
 				if (!is_null($this->debuggee)) {
 					// Deny attempt to register debuggee.
-					$this->sendToClient($connectionID, json_encode(array("type" => "STATUS", "content" => "ERROR_DEBUGGEE_EXISTS")));
+					$this->sendToClient($connectionID, json_encode(array("type" => "STATUS", "contentType" => "string", "content" => "ERROR_DEBUGGEE_EXISTS")));
 					echo "ERROR_DEBUGGEE_EXISTS: Connection $connectionID attempted to register as the debuggee but failed\n";
 				} else {
 					$this->debuggee = $connectionID;
 					$this->clientRoles[$connectionID] = "debuggee";
-                                        $this->sendToClient($connectionID, json_encode(array("type" => "STATUS", "content" => "SUCCESS_DEBUGGEE_REGISTERED")));
+                                        $this->sendToClient($connectionID, json_encode(array("type" => "STATUS", "contentType" => "string", "content" => "SUCCESS_DEBUGGEE_REGISTERED")));
 					echo "SUCCESS_DEBUGGEE_REGISTERED: Connection $connectionID registered as the debuggee\n";
 
 				}
@@ -71,7 +71,7 @@ var $debuggers = array();
 
 				$this->clientRoles[$connectionID] = "debugger";
 				$this->debuggers[$connectionID] = $connectionID;
-                                $this->sendToClient($connectionID, json_encode(array("type" => "STATUS", "content" => "SUCCESS_DEBUGGER_REGISTERED")));
+                                $this->sendToClient($connectionID, json_encode(array("type" => "STATUS", "contentType" => "string", "content" => "SUCCESS_DEBUGGER_REGISTERED")));
 				echo "SUCCESS_DEBUGGER_REGISTERED: Connection $connectionID registered as a debugger\n";
 
 				return;
@@ -79,7 +79,7 @@ var $debuggers = array();
 
 			default:
 
-                                $this->sendToClient($connectionID, json_encode(array("type" => "STATUS", "content" => "ERROR_INVALID_COMMAND")));
+                                $this->sendToClient($connectionID, json_encode(array("type" => "STATUS", "contentType" => "string", "content" => "ERROR_INVALID_COMMAND")));
 				echo "ERROR_INVALID_COMMAND: Connection $connectionID issued an invalid command.\n";
 
 				return;
@@ -95,7 +95,7 @@ var $debuggers = array();
 		$this->sendToClient($this->debuggee, $message);
 		foreach($this->debuggers as $debuggerID) {
 			if ($debuggerID != $connectionID) {
-				$this->sendToClient($debuggerID, "$Debugger $connectionID: $message");
+//				$this->sendToClient($debuggerID, "Debugger $connectionID: $message");
 			}
 		}
 	}
