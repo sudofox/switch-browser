@@ -34,30 +34,28 @@ var socket = (function () {
 
   function receiveMessage(message) {
     var messageData = message.data;
-    else {
       // convert the message string back into an object
-      var message = JSON.parse(messageData);
-      // convert message content back into whatever type it was
-      var content;
-      switch (message.contentType) {
-        case "object":
-        case "array":
-          content = JSON.parse(message.content);
-          break;
-        case "string":
-          content = message.content;
-          break;
-        default:
-          content = eval(message.content)
-          break;
-      }
-
-      message.content = content;
-
-      messageCallbacks.forEach(function (callback) {
-        callback(message);
-      });
+    var message = JSON.parse(messageData);
+    // convert message content back into whatever type it was
+    var content;
+    switch (message.contentType) {
+      case "object":
+      case "array":
+        content = JSON.parse(message.content);
+        break;
+      case "string":
+        content = message.content;
+        break;
+      default:
+        content = eval(message.content);
+        break;
     }
+
+    message.content = content;
+
+    messageCallbacks.forEach(function (callback) {
+      callback(message);
+    });
   };
 
   return {
