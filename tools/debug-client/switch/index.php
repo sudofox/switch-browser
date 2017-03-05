@@ -17,8 +17,8 @@ require_once('../config.php');
     <script type="text/javascript">
 
       socket.start({
-        host: "ws://<?php echo $websocket_config["switch_host"]; ?>",
-        port: <?php echo $websocket_config["switch_port"]; ?>,
+        host: "ws://<?php echo $config["switch_ws_host"]; ?>",
+        port: <?php echo $config["switch_ws_port"]; ?>,
         mode: "debuggee"
       });
 

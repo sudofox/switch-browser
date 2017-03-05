@@ -3,8 +3,9 @@
 // Config for Switch Debug Client
 // Filename should be config.php
 
-$websocket_config["host"] = "www.example.com";
-$websocket_config["port"] = 8000;
+$config["debugger_ws_host"] = "www.example.com";
+$config["debugger_ws_port"] = 8000;
 
-$websocket_config["switch_host"] = "www.example.com";
-$websocket_config["switch_port"] = 8000;
+$config["switch_ws_host"] = "www.example.com";
+$config["switch_ws_port"] = 8000;
+

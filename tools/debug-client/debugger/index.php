@@ -23,8 +23,8 @@ require_once("../config.php");
     <script type="text/javascript">
 
       devTool.socket.start({
-        host: "ws://<?php echo $websocket_config["host"]; ?>",
-        port: <?php echo $websocket_config["port"]; ?>,
+        host: "ws://<?php echo $config["debugger_ws_host"]; ?>",
+        port: <?php echo $config["debugger_ws_port"]; ?>,
         mode: "debugger"
       });
 

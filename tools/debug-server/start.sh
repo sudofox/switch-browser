@@ -3,4 +3,5 @@
 
 # just run it with php as long as libevent is installed
 php56='/opt/cpanel/ea-php56/root/usr/bin/php'
-$php56 DebugServer.php start
+#$php56 DebugServer.php start | tee -a debugger.log
+php DebugServer.php start | tee -a debugger.log
