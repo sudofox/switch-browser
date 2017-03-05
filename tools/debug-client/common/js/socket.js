@@ -15,12 +15,20 @@ var socket = (function () {
         // objects and arrays can contain self references, which choke JSON.stringify
         // so we build up a cashe of referenced objects, and disallow multiple instances
         var cache = [];
-        message.content = JSON.stringify(content, function(k, v) {
-          if (typeof v === "object" && v !== null) {
-            if (cache.indexOf(v) !== -1) return;
-            cache.push(v);
+        message.content = JSON.stringify(content, function(key, value) {
+          // if the value is a function, we want to serialize it
+          if (typeof value === "function") {
+            return value.toString();
+          } else {
+            // if the value is an object, there's a chance it may reference itself, so we need to check that
+            if (typeof value === "object" && value !== null) {
+              // if the value has already been read, ignore it
+              if (cache.indexOf(value) !== -1) return;
+              // else push it to the cache so we don't read it again
+              cache.push(value);
+            }
+            return value;
           }
-          return v;
         });
         cache = null;
         break;
