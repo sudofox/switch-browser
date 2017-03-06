@@ -4,7 +4,7 @@ window.devTool = (function () {
     var code;
     switch (typeof input) {
       case "function":
-        code = "var TEMP_FN = " + input.toString();
+        code = "window.TEMP_FN = " + input.toString();
         break;
       default:
         code = input;

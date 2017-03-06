@@ -4,10 +4,10 @@ window.devTool = (function () {
   function exec(str) {
     var result = eval(str);
     if (window.TEMP_FN) {
-      result = TEMP_FN();
+      result = window.TEMP_FN();
       window.TEMP_FN = null;
     }
-    console.log("result", result);
+    if (result !== null) console.log(result);
   };
 
   // get the object at a given path, ie "window.navigator"
