@@ -18,7 +18,7 @@
 
 **type:** function
 
-**use:** exit out of the browser applet (?)
+**use:** exits out of the browser applet
 
 ### openTimeoutDialog
 
@@ -28,9 +28,9 @@
 
 **example:**
 
-    ```js
-      nx.openTimeoutDialog("I'm a message!");
-    ```
+```js
+  nx.openTimeoutDialog("I'm a message!");
+```
 
 ### open1ButtonDialog
 
@@ -40,9 +40,9 @@
 
 **example:**
 
-    ```js
-      nx.open1ButtonDialog("I'm a message!", "OK!");
-    ```
+```js
+nx.open1ButtonDialog("I'm a message!", "OK!");
+```
 
 ### open2ButtonDialog
 
@@ -52,13 +52,47 @@
 
 **example:**
 
-    ```js
-      nx.open2ButtonDialog("I'm a message!", "Cancel", "OK!");
-    ```
+```js
+nx.open2ButtonDialog("I'm a message!", "Cancel", "OK!");
+```
 
 ### playSystemSe
 
 **type:** function
+
+**use:** Play a system sound effect, possible values:
+
+  * SeToggleBtnFocus
+  * SeToggleBtnOn
+  * SeToggleBtnOff
+  * SeCheckboxFocus
+  * SeCheckboxOn
+  * SeCheckboxOff
+  * SeRadioBtnFocus
+  * SeRadioBtnOn
+  * SeSelectCheck
+  * SeSelectUncheck
+  * SeBtnDecide
+  * SeTouchUnfocus
+  * SeBtnFocus
+  * SeKeyError
+  * SeDialogOpen
+  * SeWebZoomOut
+  * SeWebZoomIn
+  * SeWebNaviFocus
+  * SeWebPointerFocus
+  * SeFooterFocus
+  * SeFooterDecideBack
+  * SeFooterDecideFinish
+  * SeWebChangeCursorPointer
+  * SeWebTouchFocus
+  * SeWebLinkDecide
+  * SeWebTextboxStartEdit
+  * SeWebButtonDecide
+  * SeWebRadioBtnOn
+  * SeWebCheckboxUncheck
+  * SeWebCheckboxCheck
+  * SeWebMenuListOpen
 
 ### stopSystemSe
 
