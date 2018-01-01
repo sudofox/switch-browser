@@ -1,115 +1,173 @@
 # NX api
 
-`window.nx` exposes a small API for accessing various browser features -- but we aren't sure what most of them do just yet!
+`window.nx` exposes a small API for accessing various browser features from within Javascript. The properties and methods documented here are available across all of the Switch's browser applets, however certain applets (such as eshop) may expose more.
 
-## API
+### Properties
 
-### isKeyboardShown
+#### `isKeyboardShown`
 
-**type:** bool
+* **Type:** `{Boolean}`
 
-**use:** indicates whether or not the keyboard UI is active
+* **Usage:**
 
-### canHistoryBack
+    Indicates whether or not the keyboard UI is active.
 
-**type:** function
+### Methods
 
-### endApplet
+#### `canHistoryBack`
 
-**type:** function
+* **Returns:** `{Boolean}`
 
-**use:** exits out of the browser applet
+* **Usage:**
 
-### openTimeoutDialog
+    Returns `true` if the user can navigate to the previous page (untested but assumed).
 
-**type:** function
+#### `endApplet`
 
-**use:** Show a message for a short period of time
+* **Returns:** `{Boolean}`
 
-**example:**
+* **Usage:**
 
-```js
-  nx.openTimeoutDialog("I'm a message!");
-```
+    Closes the browser applet.
 
-### open1ButtonDialog
+#### `openTimeoutDialog`
 
-**type:** function
+* **Arguments:**
 
-**use:** Show a message, with a custom "OK" button
+    * `{String}` message
 
-**example:**
+* **Usage:** 
 
-```js
-nx.open1ButtonDialog("I'm a message!", "OK!");
-```
+    Show a message for a short period of time.
 
-### open2ButtonDialog
+#### `open1ButtonDialog`
 
-**type:** function
+* **Arguments:**
 
-**use:** Show a message, with custom "OK" and "Cancel" buttons
+    * `{String}` message
+    * `{String}` buttonText
 
-**example:**
+* **Usage:** 
 
-```js
-nx.open2ButtonDialog("I'm a message!", "Cancel", "OK!");
-```
+    Show a message with a custom 'OK' button.
 
-### playSystemSe
+* **Example:**
 
-**type:** function
+    ```js
+    nx.open1ButtonDialog("I'm a message!", "OK!");
+    ```
 
-**use:** Play a system sound effect, possible values:
+#### `open2ButtonDialog`
 
-  * SeToggleBtnFocus
-  * SeToggleBtnOn
-  * SeToggleBtnOff
-  * SeCheckboxFocus
-  * SeCheckboxOn
-  * SeCheckboxOff
-  * SeRadioBtnFocus
-  * SeRadioBtnOn
-  * SeSelectCheck
-  * SeSelectUncheck
-  * SeBtnDecide
-  * SeTouchUnfocus
-  * SeBtnFocus
-  * SeKeyError
-  * SeDialogOpen
-  * SeWebZoomOut
-  * SeWebZoomIn
-  * SeWebNaviFocus
-  * SeWebPointerFocus
-  * SeFooterFocus
-  * SeFooterDecideBack
-  * SeFooterDecideFinish
-  * SeWebChangeCursorPointer
-  * SeWebTouchFocus
-  * SeWebLinkDecide
-  * SeWebTextboxStartEdit
-  * SeWebButtonDecide
-  * SeWebRadioBtnOn
-  * SeWebCheckboxUncheck
-  * SeWebCheckboxCheck
-  * SeWebMenuListOpen
+* **Arguments:**
 
-### stopSystemSe
+    * `{String}` message
+    * `{String}` left button text
+    * `{String}` right button text
 
-**type:** function
+* **Usage:** 
 
-### footer
+    Show a message with custom 'Cancel' and 'OK' buttons.
 
-**type:** object
+* **Example:**
 
-* setAssign
+    ```js
+    nx.open2ButtonDialog("I'm a message!", "Cancel", "OK!");
+    ```
 
-    **type:** function
+#### `footer.setDefaultAssign`
 
-* setDefaultAssign
+* **Arguments:**
 
-    **type:** function
+    * `{String}` key (`"A"`, `"B"`, `"X"` or `"Y"`)
+    * `{String}` label
 
-* unsetAssign
+* **Usage:** 
 
-    **type:** function
+    Add a prompt for a given button to the footer. The button will retain its default behaviour, but the label given to it can be set to whatever you like.
+
+#### `footer.setAssign`
+
+* **Arguments:**
+
+    * `{String}` key (`"A"`, `"B"`, `"X"` or `"Y"`)
+    * `{String}` label
+    * `{Function}` callback
+    * `{Object}` params
+        * `{String}` `se` (sound effect label)
+
+* **Usage:** 
+
+    Add a prompt for a given button to the footer, and override its default behaviour(?). The `callback` function given will be called whenever the button is pressed.
+
+* **Example:**
+
+    ```js
+    // When the A button is pressed, alert the user, and play the "SeWebBtnDecide" sound effect
+
+    nx.footer.setAssign("A", "Test", function() {
+      alert("A key pressed!")
+    }, {
+      se: "SeWebBtnDecide"
+    });
+    ```
+
+#### `footer.unsetAssign`
+
+* **Arguments:**
+
+    * `{String}` key (`"A"`, `"B"`, `"X"` or `"Y"`)
+
+* **Usage:** 
+
+    Remove a button prompt added with `footer.setAssign`.
+
+#### `playSystemSe`
+
+* **Arguments:**
+
+    * `{String}` soundLabel
+
+* **Usage:** 
+
+    Play a predefined sound effect from the following list of `soundLabel` values:
+
+    ```
+    SeToggleBtnFocus
+    SeToggleBtnOn
+    SeToggleBtnOff
+    SeCheckboxFocus
+    SeCheckboxOn
+    SeCheckboxOff
+    SeRadioBtnFocus
+    SeRadioBtnOn
+    SeSelectCheck
+    SeSelectUncheck
+    SeBtnDecide
+    SeTouchUnfocus
+    SeBtnFocus
+    SeKeyError
+    SeDialogOpen
+    SeWebZoomOut
+    SeWebZoomIn
+    SeWebNaviFocus
+    SeWebPointerFocus
+    SeFooterFocus
+    SeFooterDecideBack
+    SeFooterDecideFinish
+    SeWebChangeCursorPointer
+    SeWebTouchFocus
+    SeWebLinkDecide
+    SeWebTextboxStartEdit
+    SeWebButtonDecide
+    SeWebRadioBtnOn
+    SeWebCheckboxUncheck
+    SeWebCheckboxCheck
+    SeWebMenuListOpen
+    ```
+
+#### `stopSystemSe`
+
+* **Usage:** 
+
+    Stop sound effect playback.
